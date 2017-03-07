@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `users`;  
   
 CREATE TABLE `users` (  
-  `id` int(11) NOT NULL COMMENT '用户id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `username` varchar(40) NOT NULL COMMENT '用户名',
   `password` varchar(32) NOT NULL COMMENT '用户密码',
   `pic` varchar(100) DEFAULT NULL COMMENT '用户图片', 

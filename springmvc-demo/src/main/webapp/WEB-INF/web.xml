@@ -10,6 +10,36 @@
 		<param-value>classpath:spring-mybatis.xml</param-value>
 	</context-param>
 	
+	<!-- Spring监听器 -->  
+    <listener>  
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+    </listener>
+	
+	<!--配置spring编码 -->
+	<!-- 配置字符编码过滤器，编码格式设为UTF-8，避免中文乱码 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value> <!--设置你想用的字符集，我这里用的是UTF-8 -->
+		</init-param>
+		<!--强制使用该编码 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern> <!--设置你想过滤的页面或者是Servlet，根据自己的需要配置 -->
+	</filter-mapping>
+
+    <!-- 防止Spring内存溢出监听器 -->  
+    <listener>  
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
+    </listener>
+	
 	<!-- 配置DispatchcerServlet -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
@@ -23,6 +53,15 @@
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 不拦截静态文件 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/assert/*</url-pattern>
+		<url-pattern>/css/*</url-pattern>
+		<url-pattern>/images/*</url-pattern>
+		<url-pattern>/js/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

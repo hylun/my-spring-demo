@@ -1,0 +1,22 @@
+﻿#set($title = "头像修改")
+<div>
+	<h3>头像修改</h3>
+	<form id="modform" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+		<div class="required">
+			ID：$!user.id
+		</div>
+		<div class="required">
+			账号：$!user.username
+		</div>
+		<div class="required" style="margin-bottom: 20px">
+			头像：<input type="file" id="pic" name="pic" accept="image/*" style="display:none" onChange="modform.submit()"/>
+			#if($user.pic!="")
+			<img src="$rc.contextPath/images/upload/$user.pic"/>
+			<a href="javascript:pic.click()" class="btn btn-link">重新上传</a>
+			#else 
+			无 <a href="javascript:pic.click()" class="btn btn-link">上传</a>
+			#end
+		</div>
+	</form>
+</div>
+

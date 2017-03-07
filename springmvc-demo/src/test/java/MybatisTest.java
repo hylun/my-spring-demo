@@ -1,5 +1,6 @@
 import javax.annotation.Resource;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,17 @@ public class MybatisTest {
 	@Resource(name="userMapper")  
     private UserMapper userMapper; 
 
+	private ObjectMapper mapper;
+	private void out(Object o){
+		if(mapper==null) mapper = new ObjectMapper();
+		try {
+			StackTraceElement stack[] = Thread.currentThread().getStackTrace(); 
+	        String callName=stack[2].getMethodName();
+			System.out.println(callName+":"+mapper.writeValueAsString(o));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Before  
 	public void before() { 
@@ -25,7 +37,7 @@ public class MybatisTest {
 
 	@Test  
 	public void test1() {
-		System.out.println(userMapper.selectByPrimaryKey(1));        
+		out(userMapper.selectByPrimaryKey(1));        
 	} 
 	
 	@Test  
@@ -34,12 +46,17 @@ public class MybatisTest {
 		user.setId(2);
 		user.setUsername("user_2");
 		user.setPassword("userpass2");
-		System.out.println(userMapper.insert(user));        
+		out(userMapper.insert(user));        
 	}
 	
 	@Test  
 	public void test3() {
-		System.out.println(userMapper.deleteByPrimaryKey(2));        
+		out(userMapper.deleteByPrimaryKey(2));        
+	}
+	
+	@Test  
+	public void test4() {
+		out(userMapper.getList(0, 5));        
 	}
 
 }

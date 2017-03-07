@@ -1,0 +1,22 @@
+﻿#set($title = "账号添加")
+<div style="width:200px;">
+	<h3>账号添加</h3>
+	<form id="addform" class="form-horizontal" action="" method="post">
+		<div>
+			<input type="text" style="width:100%;" id="username" name="username"
+				value="$!user.username" placeholder="账号：请输入邮箱或手机账号" autofocus tabIndex="1" /> 
+			<span>$!result.getFieldError("username").defaultMessage</span>
+		</div>
+		<div>
+			<input type="password" style="width:100%;" id="password"
+				name="password" value="$!user.password" placeholder="密码：请输入5-20位登录密码" tabIndex="2" /> 
+			<span>$!result.getFieldError("password").defaultMessage</span>
+		</div>
+		<div style="margin: 10px 0">
+			<button type="submit" class="btn btn-primary" tabIndex="4">确定</button>
+			<button type="reset" class="btn btn-warning"
+				style="margin-left: 15px" tabIndex="5">重置</button>
+		</div>
+	</form>
+</div>
+

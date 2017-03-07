@@ -1,0 +1,12 @@
+#set($title = "首页")
+<div>
+	#foreach($user in $users.list)
+	<div>
+		<span>$user.username</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="usermod/$user.id" class="btn btn-link">编辑</a>
+		<a href="userdel/$user.id" class="btn btn-link">删除</a>
+	</div>
+	#end
+	<br/>
+	<div><a href="useradd" class="btn btn-link">添加新用户</a></div>
+</div>

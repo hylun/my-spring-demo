@@ -1,13 +1,17 @@
 package com.springmvcdemo.entities;
 
+import org.hibernate.validator.constraints.Length;
+
 public class User {
     private Integer id;
-
+    
+    @Length(min=5,max=20,message="请填写5-20位的用户名")
     private String username;
 
+    @Length(min=5,max=20,message="请填写5-20位的密码")
     private String password;
 
-    private String pic;
+    private String pic="";
 
     public Integer getId() {
         return id;

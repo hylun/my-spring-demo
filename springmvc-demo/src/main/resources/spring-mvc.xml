@@ -9,6 +9,9 @@
 	<!-- 配置自动扫描的包 -->
 	<context:component-scan base-package="com.springmvcdemo" />
 	
+	<!-- 自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter两个bean -->
+	<mvc:annotation-driven/>
+	
 	<!-- 视图模式配置velocity -->
 	<bean id="velocityConfig"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -34,6 +37,14 @@
 		<property name="exposeSessionAttributes" value="true" />
 		<property name="requestContextAttribute" value="rc" />
 		<property name="exposeRequestAttributes" value="true" />
+	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 
 </beans>
