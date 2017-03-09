@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="${title}"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+	* {font-family: Microsoft YaHei, Tahoma, Helvetica, Arial, sans-serif;}
+	.header {background-color: #f5f5f5;padding: 20px;}
+	.header a {padding: 0 20px;}
+	.container {padding: 20px;margin:20px auto;}
+	.footer {height: 40px;background-color: #f5f5f5;border-top: 1px solid #ddd;padding: 20px;}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<div>
+			<a th:href="@{/one}">布局方法一</a> <a th:href="@{/two}">布局方法二</a>
+		</div>
+	</header>
+	<div  class="container" th:include="::content"></div>
+	<footer class="footer">
+		<div>
+			<p style="float: left">&copy; Hylun 2017</p>
+			<p style="float: right">
+				Powered by <a href="http://my.oschina.net/alun" target="_blank">Alun</a>
+			</p>
+		</div>
+	</footer>
+	<script th:inline="javascript" th:if="${alertMsg}">alert('[[${alertMsg}]]');</script>
+</body>
+</html>
