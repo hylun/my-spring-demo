@@ -1,0 +1,3 @@
+#springboot-thymeleaf-layout-demo
+
+本项目记录在springboot中使用thymeleaf模版实现页面布局(layout)两种方法的demo
