@@ -2,6 +2,7 @@ package com.springmvcdemo.controllers;
 
 import java.io.File;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -29,6 +30,9 @@ public class IndexController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ServletContext servletContext;
 	
 	@RequestMapping("/")
 	public String index(){
@@ -72,16 +76,16 @@ public class IndexController {
 	}
 	
 	@RequestMapping("usermod/{id}")
-	public String usermod(@PathVariable int id,@RequestParam(required=false) MultipartFile pic,ModelMap map,HttpServletRequest request){
+	public String usermod(@PathVariable int id,@RequestParam(required=false) MultipartFile pic,ModelMap map){
 		User user = userService.getUserById(id);
 		if(user==null) return "redirect:/userlist";
 		if (pic!=null && !pic.isEmpty()) {  
             try {  
                 // 文件保存路径  
-                @SuppressWarnings("deprecation")
-				String filePath = request.getRealPath("/images/upload/") + pic.getOriginalFilename(); 
-                File file = new File(filePath);
-                if(!file.getParentFile().exists()) file.mkdirs();
+				File path = new File(servletContext.getRealPath("images/upload/"));
+				if(!path.exists()) path.mkdirs();
+                File file = new File(path.getAbsoluteFile(),pic.getOriginalFilename());
+                log.debug("file:"+file.getAbsolutePath());
                 // 转存文件  
                 pic.transferTo(file); 
                 user.setPic(pic.getOriginalFilename());
