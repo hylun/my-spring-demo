@@ -31,7 +31,7 @@
 		delete from users
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.springmvcdemo.entities.User">
+	<insert id="insert" parameterType="com.springmvcdemo.entities.User" useGeneratedKeys="true" keyProperty="id">
 		insert into users (id, username, password,
 		pic)
 		values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
