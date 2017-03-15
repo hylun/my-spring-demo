@@ -7,6 +7,11 @@
 		<a href="userdel/$user.id" class="btn btn-link">删除</a>
 	</div>
 	#end
-	<br/>
+	<div>
+	#if($users.total>0)
+		<script src="$rc.contextPath/js/mypager.js"></script>
+		<script>document.write(Pager({totalCount:'$users.total',pageSize:'$users.limit'}))</script>
+	#end
+	</div>
 	<div><a href="useradd" class="btn btn-link">添加新用户</a></div>
 </div>

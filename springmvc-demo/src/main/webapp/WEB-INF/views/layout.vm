@@ -4,14 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>我的测试站点-$title</title>
-<style>
-* {font-family: Microsoft YaHei, Tahoma, Helvetica, Arial,sans-serif;}
-html, body {height: 100%;}
-.header {background-color: #f5f5f5;padding: 20px;}
-.header a{padding:0 20px;}
-.container {padding: 20px;}
-.footer {height: 40px;background-color: #f5f5f5;border-top: 1px solid #ddd;padding: 20px;}
-</style>
+<link href="$rc.contextPath/assert/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"／>
+<link href="$rc.contextPath/css/style.css" rel="stylesheet" type="text/css"／>
 </head>
 <body>
 	<header class="header">
@@ -29,6 +23,8 @@ html, body {height: 100%;}
 			</p>
 		</div>
 	</footer>
+	<script src="$rc.contextPath/assert/jquery/jquery.min.js"></script>
+	<script src="$rc.contextPath/assert/bootstrap/js/bootstrap.min.js"></script>
 	#if($alertMsg)<script>alert('$alertMsg')</script>#end
 </body>
 </html>
