@@ -4,9 +4,15 @@
 ## springmvc-demo
 本项目记录在Eclipse中使用Maven创建Springmvc+Mybatis+Velocity项目的demo
 查看[Blog教程](https://my.oschina.net/alun/blog/853694)
+
 ## springboot-thymeleaf-layout-demo
 本项目记录在springboot中使用thymeleaf模版实现页面布局(layout)两种方法的demo
 查看[Blog教程](https://my.oschina.net/alun/blog/855763)
+
 ## dubbo-provider-to-jar
 本项目记录将dubbo provider项目打包成jar包，便于搭建微服务器集群
 查看[Blog教程](https://my.oschina.net/alun/blog/867942)
+
+## motan-spring-boot-demo
+本项目记录将motan与spring-boot相整合的示例，可直接打包成jar包运行，便于搭建微服务器集群
+
